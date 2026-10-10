@@ -21,7 +21,8 @@ api.interceptors.response.use(
   (res) => res,
   async (error) => {
     const original = error.config;
-    if (error.response?.status === 401 && !original._retried) {
+    const skipRefresh = ['/auth/login', '/auth/register', '/auth/refresh'].some((p) => original.url?.includes(p));
+    if (error.response?.status === 401 && !original._retried && !skipRefresh) {
       original._retried = true;
       try {
         refreshing = refreshing || api.post('/auth/refresh');

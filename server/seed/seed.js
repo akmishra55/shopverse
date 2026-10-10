@@ -40,14 +40,14 @@ async function seed() {
   if (!(await User.findOne({ email: adminEmail }))) {
     await User.create({
       name: 'Admin User', email: adminEmail, role: 'admin',
-      password: await bcrypt.hash('Admin@123', 12),
+      password: 'Admin@123',
     });
     console.log('  • seeded admin →', adminEmail);
   }
   if (!(await User.findOne({ email: userEmail }))) {
     await User.create({
       name: 'Demo Shopper', email: userEmail, role: 'user',
-      password: await bcrypt.hash('User@123', 12),
+      password: 'User@123',
     });
     console.log('  • seeded user  →', userEmail);
   }
