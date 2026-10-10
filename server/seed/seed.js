@@ -40,7 +40,7 @@ async function seed() {
   if (!(await User.findOne({ email: adminEmail }))) {
     await User.create({
       name: 'Admin User', email: adminEmail, role: 'admin',
-      password: 'Admin@123',
+      password: process.env.ADMIN_PASSWORD,
     });
     console.log('  • seeded admin →', adminEmail);
   }
