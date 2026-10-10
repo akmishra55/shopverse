@@ -4,6 +4,15 @@ A full-stack e-commerce platform built with the **MERN stack** (MongoDB, Express
 
 ![stack](https://img.shields.io/badge/Stack-MERN-4f46e5) ![stripe](https://img.shields.io/badge/Payments-Stripe-635bff)
 
+### 🔗 Live Demo
+**👉 [shopverse-navy.vercel.app](https://shopverse-navy.vercel.app)**
+
+Demo login: `user@shopverse.dev` / `User@123`
+
+> The API runs on a free Render instance, so the first load can take up to a minute while it wakes up.
+
+**Hosted on:** Vercel (client) · Render (API) · MongoDB Atlas (database)
+
 ---
 
 ## ✨ Features
