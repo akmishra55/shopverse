@@ -130,13 +130,9 @@ export default function Checkout() {
   return (
     <main className="section">
       <div className="section-head"><h2>Secure Checkout 🔒</h2></div>
-      {config.mockMode || !stripePromise ? (
+            <Elements stripe={stripePromise}>
         <CheckoutForm config={config} onDone={setPlacedId} />
-      ) : (
-        <Elements stripe={stripePromise}>
-          <CheckoutForm config={config} onDone={setPlacedId} />
-        </Elements>
-      )}
+      </Elements>
     </main>
   );
 }
