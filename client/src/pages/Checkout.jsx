@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 import api from '../api/axios';
@@ -114,7 +114,6 @@ export default function Checkout() {
   const [placedId, setPlacedId] = useState(null);
   const { items } = useCart();
   const { user, booting } = useAuth();
-  const nav = useNavigate();
 
   useEffect(() => {
     api.get('/config').then((r) => {
@@ -124,9 +123,9 @@ export default function Checkout() {
   }, []);
 
   if (booting || !config) return <Loader />;
-  if (!user) { nav('/login', { state: { from: '/checkout' } }); return null; }
-  if (placedId) { nav(`/orders/${placedId}?placed=1`); return null; }
-  if (!items.length) { nav('/cart'); return null; }
+  if (!user) return <Navigate to="/login" state={{ from: '/checkout' }} replace />;
+  if (placedId) return <Navigate to={`/orders/${placedId}?placed=1`} replace />;
+  if (!items.length) return <Navigate to="/cart" replace />;
 
   return (
     <main className="section">
